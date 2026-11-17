@@ -1,0 +1,10 @@
+# Opsional: ganti Caddyfile bawaan FrankenPHP dengan ini (COPY ke /etc/caddy/Caddyfile).
+{
+	frankenphp
+	order php_server before file_server
+}
+{$SERVER_NAME::8080} {
+	root * /app/public
+	encode zstd gzip
+	php_server
+}
